@@ -24,10 +24,11 @@ To view available command line options, in a terminal type: `scrape -h`
 
 #### To scrape a URL and save the title, body and URL in a JSON file
 `scrape $url`
-The JSON files will be saved in a `/articles` directory. The directory will be created if it doesn't exist.
+The JSON files will be saved in a `/articles` directory.
+The directory will be created if it doesn't exist and the location will be printed as the articles are saved.
 
 #### To scrape a URL and save the title, body and URL in a JSON file in a custom directory
-`scrape $url /path/to/custom/directory`
+`scrape $url -O /path/to/custom/directory`
 
 #### To scrape multiple URLS
 `scrape $url1 $url2 $url3`
