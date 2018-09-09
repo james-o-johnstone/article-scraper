@@ -9,11 +9,11 @@ from scraper.parsers import get_parser, UnsupportedParser
 
 
 logging.basicConfig(
-    level=logging.DEBUG,
+    level=logging.INFO,
     format='%(levelname)s:%(asctime)s: %(message)s',
 )
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
+logger.setLevel(logging.INFO)
 
 
 argparser = argparse.ArgumentParser(
@@ -97,3 +97,6 @@ def run():
 
     if not args.dryrun:
         save_articles(articles, args.output_dir)
+    else:
+        for article in articles:
+            logger.info(pprint.pformat(article.jsonify()))

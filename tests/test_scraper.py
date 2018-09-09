@@ -6,11 +6,15 @@ import responses
 from scraper.scraper import scrape
 
 
+TESTS_DIR = os.path.dirname(os.path.realpath(__file__))
+TEST_DATA_PATH = os.path.join(TESTS_DIR, 'test_data')
+
+
 class TestScraper(unittest.TestCase):
     @responses.activate
     def test_html_scrape(self):
         url = "http://www.crainscleveland.com/node/688181"
-        with open(os.path.join('test_data', 'article.html')) as f:
+        with open(os.path.join(TEST_DATA_PATH, 'article.html')) as f:
             body = f.read()
         responses.add(
             responses.GET,
@@ -21,7 +25,7 @@ class TestScraper(unittest.TestCase):
         )
 
         expected_title = "Cleveland Clinic sets opening for new Lakewood Family Health Center"
-        with open(os.path.join('test_data', 'html_article_body.txt')) as f:
+        with open(os.path.join(TEST_DATA_PATH, 'html_article_body.txt')) as f:
             expected_body = f.read()
 
         articles = scrape([url])
