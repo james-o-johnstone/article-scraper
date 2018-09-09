@@ -1,12 +1,17 @@
 from abc import ABC, abstractmethod
+import logging
 import os
 import re
 
 import fitz
 from goose3 import Goose
 import requests
+from requests.exceptions import RequestException
 
 from scraper.models import Article
+
+
+logger = logging.getLogger(__name__)
 
 
 def get_parser(raw_content_type):
@@ -30,7 +35,12 @@ class HTMLParser(BaseParser):
         self.goose = Goose()
 
     def parse(self, url):
-        article = self.goose.extract(url=url)
+        try:
+            article = self.goose.extract(url=url)
+        except RequestException as e:
+            logger.exception(e)
+            raise ParserFailed
+
         return Article(url, article.title, article.cleaned_text)
 
 
@@ -46,7 +56,12 @@ class PDFParser(BaseParser):
         return Article(url, title, body)
 
     def save_pdf(self, url):
-        source = requests.get(url, stream=True)
+        try:
+            source = requests.get(url, stream=True)
+        except RequestException as e:
+            logger.exception(e)
+            raise ParserFailed
+
         filename = 'tmp_pdf.pdf'
         with open('tmp_pdf.pdf', 'wb') as f:
             for chunk in source.iter_content(chunk_size=2000):
@@ -67,6 +82,10 @@ class PDFParser(BaseParser):
 
 
 class UnsupportedParser(Exception):
+    pass
+
+
+class ParserFailed(Exception):
     pass
 
 

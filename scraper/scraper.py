@@ -5,7 +5,7 @@ import os
 import pprint
 import requests
 
-from scraper.parsers import get_parser, UnsupportedParser
+from scraper.parsers import get_parser, ParserFailed, UnsupportedParser
 
 
 logging.basicConfig(
@@ -74,7 +74,12 @@ def scrape(urls):
             continue
 
         parser = Parser()
-        article = parser.parse(head.url)
+        try:
+            article = parser.parse(head.url)
+        except ParserFailed:
+            logger.critical('Parser failure, unable to scrape %s', url)
+            continue
+
         articles.append(article)
 
         logger.info("Successfully scraped from %s", head.url)
