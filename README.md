@@ -5,17 +5,17 @@ A command line tool written in Python (3.7) to scrape HTML and PDF articles from
 
 ## Installation
 1. Install Python 3
-2. cd to the project folder.
+2. cd to the project folder
 3. Create and activate a virtual env, e.g.: `python3 -m virtualenv env && source env/bin/activate`
 4. Install required libraries: `pip install -r requirements.txt`
 5. Install the application `pip install .`
 
 ## Tests
-1. Ensure that you are in the virtualenv where you installed the libraries (see step 3 in Installation)
+1. Ensure that you are in the virtualenv where the libraries were installed (see step 3 in Installation)
 2. cd to the project folder and: `python -m unittest discover -s tests`
 
 ## Documentation
-To view available command line options, in a terminal type: `scrape -h`.
+To view available command line options, in a terminal type: `scrape -h`
 
 ## Examples
 #### To view the title and body that will be scraped from a URL 
