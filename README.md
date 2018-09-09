@@ -1,7 +1,8 @@
 # Article Scraper
+[![Build Status](https://travis-ci.org/james-o-johnstone/article-scraper.svg?branch=master)](https://travis-ci.org/james-o-johnstone/article-scraper)[![Coverage Status](https://coveralls.io/repos/github/james-o-johnstone/article-scraper/badge.svg?branch=master)](https://coveralls.io/github/james-o-johnstone/article-scraper?branch=master)
 
 ## About
-A command line tool written in Python (3.7) to scrape HTML and PDF articles from a given url.
+A command line tool written in Python 3 to scrape HTML and PDF articles from a given url.
 
 ## Installation
 1. Install Python 3
