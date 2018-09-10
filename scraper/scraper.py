@@ -23,7 +23,7 @@ argparser.add_argument(
     'urls',
     type=str,
     nargs='+',
-    help="the url/urls of HTML articles",
+    help="the url/urls of articles",
 )
 argparser.add_argument(
     '-O',
