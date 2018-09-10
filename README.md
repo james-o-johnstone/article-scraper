@@ -20,11 +20,15 @@ To view available command line options, in a terminal type: `scrape -h`
 
 ## Examples
 #### To view the title and body that will be scraped from a URL 
-`scrape $url --dry-run` where `$url` is the URL you wish to scrape (content type must be HTML/PDF).
+`scrape $url --dry-run`
+
+Where `$url` is the URL you wish to scrape (content type must be HTML/PDF).
 
 #### To scrape a URL and save the title, body and URL in a JSON file
 `scrape $url`
-The JSON files will be saved in a `/articles` directory.
+
+The JSON file will be saved in a `/articles` directory.
+
 The directory will be created if it doesn't exist and the location will be printed as the articles are saved.
 
 #### To scrape a URL and save the title, body and URL in a JSON file in a custom directory
