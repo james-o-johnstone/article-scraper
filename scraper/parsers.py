@@ -45,9 +45,6 @@ class HTMLParser(BaseParser):
 
 
 class PDFParser(BaseParser):
-    def __init__(self):
-        pass
-
     def parse(self, url):
         temp_pdf_file = self.save_pdf(url)
         title, body = self.get_title_and_body(temp_pdf_file)
@@ -63,7 +60,7 @@ class PDFParser(BaseParser):
             raise ParserFailed
 
         filename = 'tmp_pdf.pdf'
-        with open('tmp_pdf.pdf', 'wb') as f:
+        with open(filename, 'wb') as f:
             for chunk in source.iter_content(chunk_size=2000):
                 f.write(chunk)
 
